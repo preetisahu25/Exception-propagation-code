@@ -1,0 +1,28 @@
+public class ExceptionPropagationExample {
+
+    public static void methodC() {
+        System.out.println("In methodC");
+        int result = 10 / 0;
+    }
+
+    public static void methodB() {
+        System.out.println("In methodB");
+        methodC(); 
+}
+    public static void methodA() {
+        System.out.println("In methodA");
+        methodB();
+    }
+
+    public static void main(String[] args) {
+        try {
+            methodA();
+        } catch (ArithmeticException e) {
+            System.out.println("Exception caught in main: " + e);
+        }
+
+        System.out.println("Program continues...");
+    }
+}
+
+
